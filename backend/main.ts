@@ -18,6 +18,15 @@ const server = new ApolloServer({
 
 console.log("Starting server on http://localhost:8080");
 const { url } = await startStandaloneServer(server, {
-  listen: { port: 8080 },
+  listen: { port: 8080 }, hostname: "0.0.0.0",
+   context: async ({ req, res }) => {
+     return {
+       headers: {
+         'Access-Control-Allow-Origin': '*',
+         'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
+         'Access-Control-Allow-Headers': 'Content-Type'
+       }
+     };
+  }
 });
 console.log(`Server ready at ${url}`);

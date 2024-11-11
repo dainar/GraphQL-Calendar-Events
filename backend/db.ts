@@ -7,7 +7,7 @@ import { Event } from "./types.ts";
 type EventSchema = Omit<Event, "id"> & { _id: ObjectId };
 
 const client = new MongoClient();
-await client.connect(`mongodb://mongo:27017`);
+await client.connect(`mongo://mongo:27017`);
 
 const db = client.database("MyDatabase");
-export const EventsCollection = db.collection<EventSchema>("Events");
+export const EventsCollection = db.collection<EventSchema>("Events"):
